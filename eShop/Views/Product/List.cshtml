@@ -1,0 +1,14 @@
+﻿@await Html.PartialAsync("Carousel")
+
+<div>
+    <h2>
+        All products are shown here
+    </h2>
+</div>
+
+@{
+    foreach (Product product in Model.Products)
+    {
+        @await Html.PartialAsync("ProductSummary", product)
+    }
+}

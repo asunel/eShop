@@ -1,0 +1,9 @@
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+*.vs
+*.user
+bower_components/
+**/wwwroot/lib
+Migrations

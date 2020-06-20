@@ -1,0 +1,44 @@
+﻿@model List<OrderDetail>
+
+<div class="row">
+    <h2>Placed Order on @(Model.FirstOrDefault()?.Order.OrderPlaced.ToString("dd-MMMM-yyyy HH:mm:ss"))</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th class="text-right">Price</th>
+                <th class="text-right">Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model)
+            {
+                <tr>
+                    <td class="text-left">@line.Product.Name</td>
+                    <td class="text-center">@line.Quantity</td>
+                    <td class="text-right">@line.Product.Price.ToString("c")</td>
+                    <td class="text-right">
+                        @((line.Quantity * line.Product.Price).ToString("c"))
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Total:</td>
+                <td class="text-right">
+                    @(Model.Select(line => line.Quantity * line.Price).Sum().ToString("c"))
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-right">
+        <div class="btn-group ">
+            <a class="btn btn-default" asp-controller="Product" asp-action="List">Back To Home</a>
+        </div>
+    </div>
+</div>
+

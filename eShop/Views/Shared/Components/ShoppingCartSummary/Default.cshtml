@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model ShoppingCartViewModel
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li>
+        <a asp-controller="ShoppingCart" asp-action="Index">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span id="cart-status">
+                @Model.ShoppingCart.ShoppingCartItems.Select(i => i.Quantity).Sum()
+            </span>
+        </a>
+    </li>
+}

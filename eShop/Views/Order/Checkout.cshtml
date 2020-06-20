@@ -1,0 +1,15 @@
+﻿@model Order
+
+<h1>
+    @ViewBag.CheckoutCompleteMessage
+</h1>
+
+@Model.OrderId
+@Model.OrderPlaced
+
+<div class="text-right">
+    <div class="btn-group ">
+        <a class="btn btn-success" asp-controller="Order" asp-action="Index" asp-route-orderId="@Model.OrderId">View Order</a>
+        <a class="btn btn-default" asp-controller="Product" asp-action="List">Back To Home</a>
+    </div>
+</div>
