@@ -1,6 +1,7 @@
-﻿using eShop.Bussiness.Interfaces;
+﻿using eShop.Business.Interfaces;
 using eShop.Common.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -11,10 +12,14 @@ namespace eShopService.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductManager _productManager;
-        public ProductsController(IProductManager productManager)
+        private readonly ILogger<ProductsController> _logger;
+
+        public ProductsController(IProductManager productManager, ILogger<ProductsController> logger)
         {
             _productManager = productManager;
+            _logger = logger;
         }
+
         // GET api/values
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -29,8 +34,9 @@ namespace eShopService.Controllers
 
                 return Ok(products);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return BadRequest();
             }
         }
@@ -55,8 +61,9 @@ namespace eShopService.Controllers
 
                 return Ok(product);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return BadRequest();
             }
         }
@@ -79,8 +86,9 @@ namespace eShopService.Controllers
                         return NotFound();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    _logger.LogError(ex, ex.Message);
 
                     return BadRequest();
                 }
@@ -109,6 +117,7 @@ namespace eShopService.Controllers
                 }
                 catch (Exception ex)
                 {
+                    _logger.LogError(ex, ex.Message);
                     if (ex.GetType().FullName == "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException")
                     {
                         return NotFound();
@@ -136,6 +145,7 @@ namespace eShopService.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 if (ex.GetType().FullName == "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException")
                 {
                     return NotFound();
@@ -165,9 +175,9 @@ namespace eShopService.Controllers
                 }
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                _logger.LogError(ex, ex.Message);
                 return BadRequest();
             }
         }

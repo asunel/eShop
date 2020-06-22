@@ -1,7 +1,8 @@
-﻿using eShop.Bussiness.Interfaces;
+﻿using eShop.Business.Interfaces;
 using eShop.DataAccess.Repositories;
 using eShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace eShop.Controllers
@@ -9,13 +10,15 @@ namespace eShop.Controllers
     public class ShoppingCartController: Controller
     {
         private readonly IProductManager _productManager;
-
         private readonly ShoppingCart _shoppingCart;
+        private readonly ILogger<ShoppingCartController> _logger;
 
-        public ShoppingCartController(IProductManager productManager, ShoppingCart shoppingCart)
+        public ShoppingCartController(IProductManager productManager, ShoppingCart shoppingCart,
+            ILogger<ShoppingCartController> logger)
         {
             _productManager = productManager;
             _shoppingCart = shoppingCart;
+            _logger = logger;
         }
 
         public async Task<ViewResult> Index()

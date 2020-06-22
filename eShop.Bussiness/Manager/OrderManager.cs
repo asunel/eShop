@@ -1,10 +1,10 @@
-﻿using eShop.Bussiness.Interfaces;
+﻿using eShop.Business.Interfaces;
 using eShop.Common.DTO;
 using eShop.DataAccess.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace eShop.Bussiness.Manager
+namespace eShop.Business.Manager
 {
     public class OrderManager: IOrderManager
     {

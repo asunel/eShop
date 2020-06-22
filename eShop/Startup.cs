@@ -1,5 +1,5 @@
-﻿using eShop.Bussiness.Interfaces;
-using eShop.Bussiness.Manager;
+﻿using eShop.Business.Interfaces;
+using eShop.Business.Manager;
 using eShop.DataAccess;
 using eShop.DataAccess.Interfaces;
 using eShop.DataAccess.Models;
@@ -17,7 +17,7 @@ namespace eShop
 {
     public class Startup
     {
-        private IConfigurationRoot _configurationRoot;
+        private readonly IConfigurationRoot _configurationRoot;
 
         public Startup(IHostingEnvironment hostingEnvironment)
         {
@@ -58,7 +58,7 @@ namespace eShop
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole();
+            loggerFactory.AddFile("../Logs/eShop-{Date}.txt");
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
 

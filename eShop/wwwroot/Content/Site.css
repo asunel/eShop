@@ -2,6 +2,10 @@
     margin-right: 8px;
 }
 
+.glyphicon.glyphicon-shopping-cart {
+    font-size: 30px;
+}
+
 nav {
     padding: 8px;
 }
@@ -14,24 +18,12 @@ nav {
     margin-top: 5%;
 }
 
-.orderForm {
-    margin-top: 5%;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: #2fa4e7;
-}
-
 a.remove {
     text-decoration: none;
 }
 
-    a.remove:hover {
-        color: blue;
-    }
-
-.center_div {
-    margin: 0 auto;
-    width: 80% /* value of your choice which suits your alignment */
+a.remove:hover {
+    color: blue;
 }
 
 .marginTop {

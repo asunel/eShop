@@ -12,11 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Bussiness", "eShop.Bussiness\eShop.Bussiness.csproj", "{2C88732B-88B4-41CB-BA91-714E019CCED6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Business", "eShop.Bussiness\eShop.Business.csproj", "{2C88732B-88B4-41CB-BA91-714E019CCED6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Common", "eShop.Common\eShop.Common.csproj", "{7B623B99-A8C4-4B77-A0B0-0606F4B8CFC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Common", "eShop.Common\eShop.Common.csproj", "{7B623B99-A8C4-4B77-A0B0-0606F4B8CFC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopService", "eShopService\eShopService.csproj", "{D35F9D8C-B7C7-423B-8907-1DDD8D642972}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopService", "eShopService\eShopService.csproj", "{D35F9D8C-B7C7-423B-8907-1DDD8D642972}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace eShop.Bussiness.Interfaces
+namespace eShop.Business.Interfaces
 {
     public interface IShoppingCartManager
     {

@@ -1,9 +1,10 @@
-﻿using System.Security.Claims;
-using eShop.Bussiness.Interfaces;
+﻿using eShop.Business.Interfaces;
 using eShop.Common.DTO;
 using eShop.DataAccess.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace eShop.Controllers
@@ -11,13 +12,15 @@ namespace eShop.Controllers
     public class OrderController : Controller
     {
         private readonly IOrderManager _orderManager;
-
         private readonly ShoppingCart _shoppingCart;
+        private readonly ILogger<OrderController> _logger;
 
-        public OrderController(IOrderManager orderManager, ShoppingCart shoppingCart)
+        public OrderController(IOrderManager orderManager, ShoppingCart shoppingCart,
+            ILogger<OrderController> logger)
         {
             _orderManager = orderManager;
             _shoppingCart = shoppingCart;
+            _logger = logger;
         }
 
         [Authorize]
