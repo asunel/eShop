@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using eShopService.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eShopService.Controllers
 {
@@ -13,14 +15,17 @@ namespace eShopService.Controllers
     {
         private readonly IProductManager _productManager;
         private readonly ILogger<ProductsController> _logger;
+        //private readonly IUserService _userService;
 
-        public ProductsController(IProductManager productManager, ILogger<ProductsController> logger)
+        public ProductsController(IProductManager productManager
+            , ILogger<ProductsController> logger
+            )//, IUserService userService)
         {
             _productManager = productManager;
             _logger = logger;
+           // _userService = userService;
         }
 
-        // GET api/values
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -41,7 +46,6 @@ namespace eShopService.Controllers
             }
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int? id)
         {
@@ -68,8 +72,8 @@ namespace eShopService.Controllers
             }
         }
 
-        // POST api/values
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Post([FromBody] Product newProduct)
         {
             if (ModelState.IsValid)
@@ -99,7 +103,6 @@ namespace eShopService.Controllers
 
         }
 
-        // PUT api/values/5
         [HttpPut]
         public async Task<IActionResult> Put([FromBody] Product productChanges)
         {
